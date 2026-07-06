@@ -58,6 +58,10 @@ definePageMeta({
             class="justify-center" 
             :loading="false" 
             :disabled="false"
+            @click="signIn.social({
+              provider: 'google',
+              callbackURL: '/',
+            })"
           >
             Google
           </UButton>

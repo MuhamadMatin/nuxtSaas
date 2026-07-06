@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     tursoAuthToken: "",
     githubClientId: "",
     githubClientSecret: "",
+    googleClientId: "",
+    googleClientSecret: "",
     public : {
       appEnv: "",
     }

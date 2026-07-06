@@ -43,7 +43,11 @@ definePageMeta({
       </template>
       <div class="space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <UButton color="neutral" variant="outline" icon="mdi:google" class="justify-center" :loading="false" :disabled="false">
+          <UButton color="neutral" variant="outline" icon="mdi:google" class="justify-center" :loading="false" :disabled="false"
+            @click="signIn.social({
+                provider: 'google',
+                callbackURL: '/',
+            })">
             Google
           </UButton>
           <UButton color="neutral" variant="outline" icon="mdi:github" class="justify-center" :loading="false" :disabled="false" 
