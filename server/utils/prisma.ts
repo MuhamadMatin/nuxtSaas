@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaLibSQL } from "@prisma/adapter-libsql";
+import { PrismaLibSql } from "@prisma/adapter-libsql";
 
 const { tursoDatabaseUrl, tursoAuthToken, public: { appEnv } } = useRuntimeConfig();
-const adapter = new PrismaLibSQL({
+const adapter = new PrismaLibSql({
   url: tursoDatabaseUrl,
   authToken: appEnv === "development" ? undefined : tursoAuthToken,
 })

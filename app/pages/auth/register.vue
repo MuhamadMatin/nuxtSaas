@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { useAuth } from '~/composables/useAuth'
 
 const schema = z.object({
   name: z.string().trim().min(5, "Mane must be at least 5 characters"),
@@ -21,11 +22,21 @@ const state = reactive<Partial<Schema>>({
   confirmPassword: '',
 })
 
-const toast = useToast()
+const { signIn, signUp } = useAuth();
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  // toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
-  console.log(event.data)
+  const { error } = await signUp.email({
+    name: event.data.name,
+    email: event.data.email,
+    password: event.data.password,
+    callbackURL: "/",
+  });
+
+  console.log(error);
 }
+
+definePageMeta({
+  layout: 'auth',
+})
 </script>
 
 <template>
@@ -57,6 +68,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
             class="justify-center" 
             :loading="false" 
             :disabled="false"
+            @click="signIn.social({
+              provider: 'github',
+              callbackURL: '/',
+            })"
           >
             Github
           </UButton>
