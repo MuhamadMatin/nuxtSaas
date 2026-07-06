@@ -1,6 +1,35 @@
 <script setup lang="ts">
+  import type { DropdownMenuItem } from '@nuxt/ui'
   import { sidebarRoutes } from '~~/constants/tools'
   const open = ref(false);
+  const { logout } = useAuth();
+
+  const items = ref<DropdownMenuItem[][]>([
+    [
+      {
+        label: 'Profile',
+        icon: 'i-lucide-user',
+      },
+      {
+        label: 'Billing',
+        icon: 'i-lucide-credit-card',
+      },
+      {
+        label: 'Setting',
+        icon: 'i-lucide-settings',
+      },
+      {
+        label: 'Logout',
+        icon: 'i-lucide-log-out',
+        color: 'error',
+        onSelect: async () => {
+          await logout({
+            redirectTo: "/auth/login"
+          })
+        }
+      }
+    ]
+  ])
 </script>
 
 <template>
@@ -25,6 +54,9 @@
           </div>
         </template>
       </UDrawer>
+      <UDropdownMenu :items="items">
+        <UButton icon="i-lucide-menu" color="neutral" variant="outline" />
+      </UDropdownMenu>
       <ThemeToggle />
     </u-container>
   </nav>
