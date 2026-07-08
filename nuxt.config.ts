@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     githubClientSecret: "",
     googleClientId: "",
     googleClientSecret: "",
+    geminiApi: "",
     public : {
       appEnv: "",
     }
