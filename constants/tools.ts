@@ -12,7 +12,12 @@ export const sidebarRoutes: NavigationMenuItem[][] = [[
   {
     label: 'Article Writer',
     icon: 'lucide:square-pen',
-    to: '/dashboard/write-article',
+    to: '/dashboard/article',
+  },
+  {
+    label: 'Blog Title Generator',
+    icon: 'lucide:frame',
+    to: '/dashboard/blog',
   },
   {
     label: 'Background Removal',

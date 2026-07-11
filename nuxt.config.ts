@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@vueuse/nuxt',
+    '@nuxtjs/mdc',
   ],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
