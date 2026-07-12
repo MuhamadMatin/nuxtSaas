@@ -18,6 +18,9 @@ export default defineNuxtConfig({
     googleClientId: "",
     googleClientSecret: "",
     geminiApi: "",
+    cloudinaryCloudName: "", 
+    cloudinaryApiKey: "", 
+    cloudinaryApiSecret: "",
     public : {
       appEnv: "",
     }

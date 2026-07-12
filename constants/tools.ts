@@ -22,7 +22,7 @@ export const sidebarRoutes: NavigationMenuItem[][] = [[
   {
     label: 'Background Removal',
     icon: 'lucide:eraser',
-    to: '/dashboard/remove-backgorund',
+    to: '/dashboard/remove-background',
   },
   {
     label: 'Object Removal',
