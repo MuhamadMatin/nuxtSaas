@@ -27,6 +27,7 @@ model User {
   deletedBy     String?
   sessions      Session[]
   accounts      Account[]
+  userLimit     UserLimit?
 
   @@map("user")
 }
@@ -87,4 +88,17 @@ model Verification {
   deletedBy  String?
 
   @@map("verification")
+}
+
+model UserLimit {
+  id         String @id @default(cuid())
+  user       User   @relation(fields: [userId], references: [id])
+  userId     String @unique
+  count      Int    @default(0)
+  createdAt  DateTime  @default(now())
+  createdBy  String?
+  updatedAt  DateTime  @updatedAt
+  updatedBy  String?
+  deletedAt  DateTime?
+  deletedBy  String?
 }

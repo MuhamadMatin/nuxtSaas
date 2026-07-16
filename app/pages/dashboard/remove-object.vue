@@ -83,7 +83,9 @@
       })
 
       if (data) {
-        imageUrl.value = data        
+        imageUrl.value = data
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError

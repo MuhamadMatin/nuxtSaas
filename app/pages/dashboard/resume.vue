@@ -57,6 +57,8 @@
 
       if (data) {
         contentResume.value = data
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError

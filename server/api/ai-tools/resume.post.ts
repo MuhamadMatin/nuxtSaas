@@ -1,4 +1,5 @@
 import { extractText, getDocumentProxy } from "unpdf";
+import { incrementLimit } from "~~/server/services/user-limit";
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -31,6 +32,8 @@ export default defineEventHandler(async (event) => {
     temperature: 0.5,
     max_completion_tokens: 1000
   });
+
+  await incrementLimit(event.context.user.id)
 
   return resp.choices[0]?.message.content
 })

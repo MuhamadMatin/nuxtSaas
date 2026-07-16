@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import { connectCloudinary } from "~~/server/utils/cloudinary";
 import type { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
-import { effect } from 'vue';
+import { incrementLimit } from '~~/server/services/user-limit';
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -40,5 +40,8 @@ export default defineEventHandler(async (event) => {
     resource_type: 'image',
     secure: true
   });
+
+  await incrementLimit(event.context.user.id)
+
   return imageUrl;
 })

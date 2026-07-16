@@ -51,6 +51,8 @@
         })
 
         state.userPrompt = ""
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError

@@ -22,9 +22,7 @@
     userPrompt: ""
   })
 
-  const messages = ref<Message[]>([
-    
-  ])
+  const messages = ref<Message[]>([])
 
   const isLoading = ref(false);
   const error = ref<AppError | null>(null)
@@ -51,6 +49,8 @@
         })
 
         state.userPrompt = ""
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError

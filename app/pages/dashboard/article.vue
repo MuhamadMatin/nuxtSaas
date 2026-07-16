@@ -54,6 +54,8 @@
         content.value = data
         state.articleTopic = ""
         state.articleLength = event.data.articleLength ?? 500
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError

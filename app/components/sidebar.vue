@@ -14,6 +14,7 @@
           <UNavigationMenu :items="sidebarRoutes" orientation="vertical" class="data-[orientation=vertical]:w-full" :ui="{label: 'py-2.5', link: 'py-3'}" />
         </div>
       </div>
+      <UserGenerateCounter />
     </div>
   </aside>
 </template>

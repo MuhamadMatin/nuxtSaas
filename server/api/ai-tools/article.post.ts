@@ -1,3 +1,4 @@
+import { incrementLimit } from "~~/server/services/user-limit";
 import { openai } from "~~/server/utils/openai";
 
 export default defineEventHandler(async(event) => {
@@ -22,6 +23,8 @@ export default defineEventHandler(async(event) => {
     temperature: 0.5,
     max_completion_tokens: articleTopicLength ? articleTopicLength : 5000
   });
+
+  await incrementLimit(event.context.user.id)
 
   return resp.choices[0]?.message.content
 });

@@ -43,6 +43,8 @@
         content.value = data
         state.blogTopic = ""
         state.blogCategory = event.data.blogCategory
+
+        await refreshNuxtData('userData');
       }
     } catch (e) {
       const err = e as FetchError
