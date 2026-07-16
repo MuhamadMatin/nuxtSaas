@@ -83,9 +83,7 @@
       })
 
       if (data) {
-        imageUrl.value = data
-        console.log(data);
-        
+        imageUrl.value = data        
       }
     } catch (e) {
       const err = e as FetchError

@@ -32,6 +32,6 @@ export const sidebarRoutes: NavigationMenuItem[][] = [[
   {
     label: 'Resume Reviewer',
     icon: 'lucide:file-check',
-    to: '/dashboard/review-resume',
+    to: '/dashboard/resume',
   },
 ]]
