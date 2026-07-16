@@ -20,7 +20,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   const { error } = await signIn.email({
     email: event.data.email,
     password: event.data.password,
-    callbackURL: "/",
+    callbackURL: "/dashboard",
   });
 
   console.log(error);
@@ -46,14 +46,14 @@ definePageMeta({
           <UButton color="neutral" variant="outline" icon="mdi:google" class="justify-center" :loading="false" :disabled="false"
             @click="signIn.social({
                 provider: 'google',
-                callbackURL: '/',
+                callbackURL: '/dashboard',
             })">
             Google
           </UButton>
           <UButton color="neutral" variant="outline" icon="mdi:github" class="justify-center" :loading="false" :disabled="false" 
             @click="signIn.social({
               provider: 'github',
-              callbackURL: '/',
+              callbackURL: '/dashboard',
             })">
             Github
           </UButton>

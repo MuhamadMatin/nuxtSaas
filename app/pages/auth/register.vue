@@ -28,7 +28,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     name: event.data.name,
     email: event.data.email,
     password: event.data.password,
-    callbackURL: "/",
+    callbackURL: "/dashboard",
   });
 
   console.log(error);
@@ -60,7 +60,7 @@ definePageMeta({
             :disabled="false"
             @click="signIn.social({
               provider: 'google',
-              callbackURL: '/',
+              callbackURL: '/dashboard',
             })"
           >
             Google
@@ -74,7 +74,7 @@ definePageMeta({
             :disabled="false"
             @click="signIn.social({
               provider: 'github',
-              callbackURL: '/',
+              callbackURL: '/dashboard',
             })"
           >
             Github
