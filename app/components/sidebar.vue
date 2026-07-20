@@ -12,6 +12,7 @@
         <u-separator />
         <div class="px-3 py-4">
           <UNavigationMenu :items="sidebarRoutes" orientation="vertical" class="data-[orientation=vertical]:w-full" :ui="{label: 'py-2.5', link: 'py-3'}" />
+          <Navbar />
         </div>
       </div>
       <UserGenerateCounter />

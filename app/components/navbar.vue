@@ -13,6 +13,7 @@
       {
         label: 'Billing',
         icon: 'i-lucide-credit-card',
+        to: "/dashboard/settings"
       },
       {
         label: 'Setting',
