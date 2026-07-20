@@ -2,6 +2,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import { connectCloudinary } from "~~/server/utils/cloudinary";
 import type { UploadApiErrorResponse, UploadApiResponse } from 'cloudinary';
 import { incrementLimit } from '~~/server/services/user-limit';
+import { validateUser } from '~~/server/utils/validate-user';
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -13,6 +14,8 @@ export default defineEventHandler(async (event) => {
       statusMessage: "No image provided"
     });
   }
+
+  const isPro = await validateUser(event.context.user.id);
 
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
@@ -39,7 +42,9 @@ export default defineEventHandler(async (event) => {
   };
   const result = await uploadFromBuffer();
 
-  await incrementLimit(event.context.user.id)
+  if (!isPro) {
+    await incrementLimit(event.context.user.id)
+  }
 
   return result.secure_url;
 })

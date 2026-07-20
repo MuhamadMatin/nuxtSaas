@@ -1,5 +1,6 @@
 import { incrementLimit } from "~~/server/services/user-limit";
 import { openai } from "~~/server/utils/openai";
+import { validateUser } from "~~/server/utils/validate-user";
 
 export default defineEventHandler(async(event) => {
   const { articleTopic, articleTopicLength } = await readBody(event);
@@ -9,6 +10,8 @@ export default defineEventHandler(async(event) => {
       statusMessage: "Article Topic Required"
     });
   }
+
+  const isPro = await validateUser(event.context.user.id);
 
   const prompt = `Write an article about ${articleTopic} in ${articleTopicLength ? articleTopicLength : 500} words`
 
@@ -24,7 +27,9 @@ export default defineEventHandler(async(event) => {
     max_completion_tokens: articleTopicLength ? articleTopicLength : 5000
   });
 
-  await incrementLimit(event.context.user.id)
+  if (!isPro) {
+    await incrementLimit(event.context.user.id)
+  }
 
   return resp.choices[0]?.message.content
 });

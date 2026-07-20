@@ -1,5 +1,6 @@
 import { extractText, getDocumentProxy } from "unpdf";
 import { incrementLimit } from "~~/server/services/user-limit";
+import { validateUser } from "~~/server/utils/validate-user";
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -11,6 +12,8 @@ export default defineEventHandler(async (event) => {
       statusMessage: "No resume provided"
     });
   }
+  
+  const isPro = await validateUser(event.context.user.id);
 
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
@@ -33,7 +36,9 @@ export default defineEventHandler(async (event) => {
     max_completion_tokens: 1000
   });
 
-  await incrementLimit(event.context.user.id)
+  if (!isPro) {
+    await incrementLimit(event.context.user.id)
+  }
 
   return resp.choices[0]?.message.content
 })

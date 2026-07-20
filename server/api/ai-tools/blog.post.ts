@@ -1,5 +1,6 @@
 import { incrementLimit } from "~~/server/services/user-limit";
 import { openai } from "~~/server/utils/openai";
+import { validateUser } from "~~/server/utils/validate-user";
 
 export default defineEventHandler(async(event) => {
   const { blogTopic, blogCategory } = await readBody(event);
@@ -16,6 +17,8 @@ export default defineEventHandler(async(event) => {
     });
   }
 
+  const isPro = await validateUser(event.context.user.id);
+
   const prompt = `generate a blog title for ${blogTopic} in category ${blogCategory}`
 
   const resp = await openai.chat.completions.create({
@@ -30,7 +33,9 @@ export default defineEventHandler(async(event) => {
     max_completion_tokens: 200
   });
 
-  await incrementLimit(event.context.user.id)
+  if (!isPro) {
+    await incrementLimit(event.context.user.id)
+  }
   
   return resp.choices[0]?.message.content
 });

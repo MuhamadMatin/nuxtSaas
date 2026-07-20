@@ -1,5 +1,6 @@
 import { incrementLimit } from "~~/server/services/user-limit";
 import { openai } from "~~/server/utils/openai";
+import { validateUser } from "~~/server/utils/validate-user";
 
 export default defineEventHandler(async(event) => {
   const { messages } = await readBody(event);
@@ -9,6 +10,8 @@ export default defineEventHandler(async(event) => {
       statusMessage: "Message required"
     });
   }
+
+  const isPro = await validateUser(event.context.user.id);
 
   const resp = await openai.chat.completions.create({
     model: "gemini-3.5-flash",
@@ -23,9 +26,9 @@ export default defineEventHandler(async(event) => {
     max_completion_tokens: 500
   });
 
-  console.log(event.context.user.id)
-
-  await incrementLimit(event.context.user.id)
+  if (!isPro) {
+    await incrementLimit(event.context.user.id)
+  }
 
   return resp.choices[0]?.message.content
 });
