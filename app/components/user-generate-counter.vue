@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { MAX_FREE_GENERATE } from '~/utils/utils/user-limit';
+import { useAuth } from '~/composables/useAuth'
 
+const { upgradeToPro } = useAuth();
 const { data: userData, status } = await useFetch('/api/user', {
   key: "userData"
 });
@@ -11,10 +13,12 @@ const progress = computed(() => {
   }  
   return 0
 })
+
+const isPro = computed(() => !!userData.value?.subcription)
 </script>
 
 <template>
-  <div v-if="status != 'pending'" class="mt-auto">
+  <div v-if="status != 'pending' && !isPro" class="mt-auto">
     <u-separator />
     <div class="px-3">
       <div class="py-6 px-2">
@@ -22,7 +26,7 @@ const progress = computed(() => {
           <p>{{ userData ? userData.userLimitCount : 0 }} / {{ MAX_FREE_GENERATE }} Generate</p>
           <u-progress v-model="progress" />
         </div>
-        <UButton icon="lucide:zap" color="error" class="w-full justify-center">
+        <UButton icon="lucide:zap" color="error" class="w-full justify-center" @click="upgradeToPro" >
           Upgrade
         </UButton>
       </div>

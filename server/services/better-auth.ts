@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "~~/server/utils/prisma";
 import type { H3Event } from 'h3'
+import { setupPolar } from "~~/server/services/polar";
 
 const { githubClientId, githubClientSecret, googleClientId, googleClientSecret } = useRuntimeConfig();
 export const auth = betterAuth({
@@ -32,6 +33,9 @@ export const auth = betterAuth({
       maxAge: 5 * 60,
     },
   },
+  plugins: [
+    setupPolar(),
+  ],
 });
 
 export const getAuthSession = async (event: H3Event) => {
