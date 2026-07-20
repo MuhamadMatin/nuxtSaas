@@ -1,1 +1,1 @@
-export const MAX_FREE_GENERATE = 25
+export const MAX_FREE_GENERATE = 5
