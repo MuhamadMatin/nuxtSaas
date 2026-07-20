@@ -17,7 +17,7 @@ const polarClient = () => {
 };
 
 export const setupPolar = () => polar({
-  client: polarClient,
+  client: polarClient(),
   createCustomerOnSignUp: true,
   use: [
     checkout({
