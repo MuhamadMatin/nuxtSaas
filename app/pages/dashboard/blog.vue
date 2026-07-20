@@ -7,6 +7,8 @@
     layout: "dashboard"
   });
 
+  const { toggleModal } = useProModal();
+
   const schema = z.object({
     blogTopic: z.string().min(1, "Blog Topic required"),
     blogCategory: z.string(),
@@ -48,6 +50,12 @@
       }
     } catch (e) {
       const err = e as FetchError
+      if (err.statusCode === 401) {
+        navigateTo("/auth/login");
+      }
+      if (err.statusCode === 403) {
+        toggleModal(true);
+      }
       error.value = getError(err)
     } finally {
       isLoading.value = false;

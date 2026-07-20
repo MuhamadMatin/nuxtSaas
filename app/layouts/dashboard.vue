@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import ProModal from '~/components/pro-modal.vue';
   import Sidebar from '~/components/sidebar.vue';
 </script>
 
@@ -14,4 +15,5 @@
       </Main>
     </div>
   </div>
+  <ProModal />
 </template>

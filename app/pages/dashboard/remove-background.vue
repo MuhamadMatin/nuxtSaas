@@ -7,6 +7,8 @@
     layout: "dashboard"
   });
 
+  const { toggleModal } = useProModal();
+
   const MAX_FILE_SIZE = 2 * 1024 * 1024 // 2MB
   const MIN_DIMENSIONS = { width: 200, height: 200 }
   const MAX_DIMENSIONS = { width: 4096, height: 4096 }
@@ -86,6 +88,12 @@
       }
     } catch (e) {
       const err = e as FetchError
+      if (err.statusCode === 401) {
+        navigateTo("/auth/login");
+      }
+      if (err.statusCode === 403) {
+        toggleModal(true);
+      }
       error.value = getError(err)
     } finally {
       isLoading.value = false;

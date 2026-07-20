@@ -6,6 +6,7 @@ const { upgradeToPro } = useAuth();
 const { data: userData, status } = await useFetch('/api/user', {
   key: "userData"
 });
+const isPro = computed(() => !!userData.value?.subcription)
 
 const progress = computed(() => {
   if (userData.value) {
@@ -13,8 +14,6 @@ const progress = computed(() => {
   }  
   return 0
 })
-
-const isPro = computed(() => !!userData.value?.subcription)
 </script>
 
 <template>

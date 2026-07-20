@@ -7,6 +7,8 @@
     layout: "dashboard"
   });
 
+  const { toggleModal } = useProModal();
+
   const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
   const ACCEPTED_FILE_TYPES = ['application/pdf']
 
@@ -62,6 +64,12 @@
       }
     } catch (e) {
       const err = e as FetchError
+      if (err.statusCode === 401) {
+        navigateTo("/auth/login");
+      }
+      if (err.statusCode === 403) {
+        toggleModal(true);
+      }
       error.value = getError(err)
     } finally {
       isLoading.value = false;
