@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { aiTools } from "~~/constants/tools"
   import { aiReviews } from "~~/constants/reviews"
+  import { faqItems } from "~~/constants/faq"
 </script>
 
 <template>
@@ -85,6 +86,18 @@
             </template>
           </UCard>
         </div>
+      </div>
+    </UContainer>
+    <!-- accordion -->
+    <UContainer class="mb-32">
+      <div class="flex flex-col items-center justify-center text-center mb-10 sm:mb-16">
+        <h2 class="text-center text-2xl font-bold md:text-4xl">Frequently asked questions</h2>
+        <p class="text-center font-light text-muted-foreground text-sm md:text-lg">
+          Everything you need to know before getting started
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <UAccordion :items="faqItems" />
       </div>
     </UContainer>
   </div>
