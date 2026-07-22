@@ -2,6 +2,8 @@
 useSeoMeta({
   title: "About Us",
   description: "Learn about our mission to make AI tools accessible to everyone.",
+  ogTitle: "About Us - NuxtSaaS",
+  ogDescription: "Learn about our mission to make AI tools accessible to everyone.",
 })
 
 const values = [

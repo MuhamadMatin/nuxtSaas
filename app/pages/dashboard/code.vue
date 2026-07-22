@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'AI Code Generation',
+    description: 'Generate code snippets and solutions using natural language descriptions powered by AI.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const schema = z.object({

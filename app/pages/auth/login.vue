@@ -3,6 +3,12 @@ import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { useAuth } from '~/composables/useAuth'
 
+useSeoMeta({
+  title: 'Login',
+  description: 'Sign in to your NuxtSaaS account to access AI-powered creative tools and dashboard.',
+  robots: 'noindex, nofollow',
+})
+
 const schema = z.object({
   email: z.email('Invalid email'),
   password: z.string('Password is required').min(8, 'Must be at least 8 characters'),

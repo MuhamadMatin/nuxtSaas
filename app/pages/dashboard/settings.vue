@@ -4,6 +4,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'Settings',
+    description: 'Manage your account settings, billing, and subscription plan.',
+    robots: 'noindex, nofollow',
+  })
+
   const { upgradeToPro } = useAuth();
   const { data: userData, status } = await useFetch('/api/user', {
     key: "userData"

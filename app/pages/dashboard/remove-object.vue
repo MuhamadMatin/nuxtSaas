@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'Object Removal',
+    description: 'Easily erase unwanted elements from your photos using our precise AI object remover.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const MAX_FILE_SIZE = 2 * 1024 * 1024 // 2MB

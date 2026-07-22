@@ -5,6 +5,12 @@
     layout: 'dashboard',
     middleware: 'auth'
   })
+
+  useSeoMeta({
+    title: 'Dashboard',
+    description: 'Access all AI-powered tools from your dashboard. Generate content, process images, and more.',
+    robots: 'noindex, nofollow',
+  })
 </script>
 
 <template>

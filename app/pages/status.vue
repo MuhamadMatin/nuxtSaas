@@ -1,7 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "System Status",
-  description: "Current uptime and status of our services.",
+  description: "Current uptime and operational status of all NuxtSaaS services.",
+  ogTitle: "System Status - NuxtSaaS",
+  ogDescription: "Current uptime and operational status of all NuxtSaaS services.",
 })
 
 const services = [

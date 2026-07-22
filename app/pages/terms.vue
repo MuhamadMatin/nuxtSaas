@@ -1,7 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "Terms of Service",
-  description: "The rules and guidelines for using our platform.",
+  description: "The rules and guidelines for using our platform. Read before using our services.",
+  ogTitle: "Terms of Service - NuxtSaaS",
+  ogDescription: "The rules and guidelines for using our platform. Read before using our services.",
 })
 
 const lastUpdated = "July 22, 2026"

@@ -5,7 +5,9 @@ import type { FetchError } from "ofetch"
 
 useSeoMeta({
   title: "Contact Us",
-  description: "Get in touch with our team.",
+  description: "Get in touch with our team. Questions, feedback, or partnership ideas — we'd love to hear from you.",
+  ogTitle: "Contact Us - NuxtSaaS",
+  ogDescription: "Get in touch with our team. Questions, feedback, or partnership ideas — we'd love to hear from you.",
 })
 
 const schema = z.object({

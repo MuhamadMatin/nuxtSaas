@@ -1,7 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "Legal",
-  description: "Legal documents and policies.",
+  description: "Legal documents and policies. Everything about how we operate, and your rights as a user.",
+  ogTitle: "Legal - NuxtSaaS",
+  ogDescription: "Legal documents and policies. Everything about how we operate, and your rights as a user.",
 })
 
 const documents = [

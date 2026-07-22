@@ -3,6 +3,12 @@ import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { useAuth } from '~/composables/useAuth'
 
+useSeoMeta({
+  title: 'Create Account',
+  description: 'Create your NuxtSaaS account and start using AI-powered tools for content generation, image processing, and more.',
+  robots: 'noindex, nofollow',
+})
+
 const schema = z.object({
   name: z.string().trim().min(5, "Mane must be at least 5 characters"),
   email: z.email('Invalid email'),

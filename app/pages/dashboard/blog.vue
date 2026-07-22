@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'Blog Title Generator',
+    description: 'Discover compelling and attention-grabbing blog titles instantly with AI-powered suggestions.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const schema = z.object({

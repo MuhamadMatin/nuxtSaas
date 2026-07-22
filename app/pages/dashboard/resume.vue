@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'Resume Reviewer',
+    description: 'Enhance your resume with AI-powered insights to boost your chances of getting hired.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB

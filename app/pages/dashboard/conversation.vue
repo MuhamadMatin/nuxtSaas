@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'AI Conversation',
+    description: 'Engage in intelligent conversations with AI for brainstorming, questions, or casual chat.',
+    robots: 'noindex, nofollow',
+  })
+
     const { toggleModal } = useProModal();
 
   const schema = z.object({

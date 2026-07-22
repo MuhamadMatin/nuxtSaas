@@ -1,7 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "Privacy Policy",
-  description: "How we collect, use, and protect your personal data.",
+  description: "How we collect, use, and protect your personal data. Your privacy matters to us.",
+  ogTitle: "Privacy Policy - NuxtSaaS",
+  ogDescription: "How we collect, use, and protect your personal data. Your privacy matters to us.",
 })
 
 const lastUpdated = "July 22, 2026"

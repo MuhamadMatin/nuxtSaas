@@ -2,6 +2,15 @@
   import { aiTools } from "~~/constants/tools"
   import { aiReviews } from "~~/constants/reviews"
   import { faqItems } from "~~/constants/faq"
+
+  useSeoMeta({
+    title: 'AI-Powered Creative Tools',
+    description: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more — all in one platform.',
+    ogTitle: 'NuxtSaaS — AI-Powered Creative Tools',
+    ogDescription: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more — all in one platform.',
+    twitterTitle: 'NuxtSaaS — AI-Powered Creative Tools',
+    twitterDescription: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more.',
+  })
 </script>
 
 <template>

@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'AI Article Writer',
+    description: 'Craft well-structured and engaging articles on any subject using advanced AI writing assistance.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const schema = z.object({

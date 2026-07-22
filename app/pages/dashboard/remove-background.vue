@@ -8,6 +8,12 @@
     middleware: 'auth'
   })
 
+  useSeoMeta({
+    title: 'Background Removal',
+    description: 'Remove image backgrounds instantly and clearly with our intelligent AI-based remover.',
+    robots: 'noindex, nofollow',
+  })
+
   const { toggleModal } = useProModal();
 
   const MAX_FILE_SIZE = 2 * 1024 * 1024 // 2MB
