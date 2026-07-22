@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { aiTools } from '~~/constants/tools';
+  import { aiTools } from '~~/constants/tools';
 
-definePageMeta({
-  layout: 'dashboard',
-})
+  definePageMeta({
+    layout: 'dashboard',
+    middleware: 'auth'
+  })
 </script>
 
 <template>

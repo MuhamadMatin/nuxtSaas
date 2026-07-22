@@ -4,8 +4,9 @@
   import type { FetchError } from "ofetch"
 
   definePageMeta({
-    layout: "dashboard"
-  });
+    layout: 'dashboard',
+    middleware: 'auth'
+  })
 
   const { toggleModal } = useProModal();
 
