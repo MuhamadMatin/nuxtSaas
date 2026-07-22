@@ -1,64 +1,13 @@
 <script setup lang="ts">
-  import type { DropdownMenuItem } from '@nuxt/ui'
-  import { sidebarRoutes } from '~~/constants/tools'
-  const open = ref(false);
-  const { logout } = useAuth();
 
-  const items = ref<DropdownMenuItem[][]>([
-    [
-      {
-        label: 'Profile',
-        icon: 'i-lucide-user',
-      },
-      {
-        label: 'Billing',
-        icon: 'i-lucide-credit-card',
-        to: "/dashboard/settings"
-      },
-      {
-        label: 'Setting',
-        icon: 'i-lucide-settings',
-      },
-      {
-        label: 'Logout',
-        icon: 'i-lucide-log-out',
-        color: 'error',
-        onSelect: async () => {
-          await logout({
-            redirectTo: "/auth/login"
-          })
-        }
-      }
-    ]
-  ])
 </script>
 
 <template>
-  <nav class="fixed h-16 top-0 right-0 left-0 sm:left-64 border-b border-gray-300 dark:border-gray-800 backdrop-blur-md bg-white/70 dark:bg-gray-900/70">
-    <u-container class="flex h-full items-center justify-between sm:justify-end">
-      <!-- <slot /> -->
-      <UDrawer v-model="open" direction="left" :handle="false" :ui="{ header: 'flex items-center justify-between h-16 px-5', container:'p-0 w-72 gap-0' }">
-        <UButton color="neutral" variant="subtle" trailing-icon="i-lucide-menu" class="sm:hidden" />
-        
-        <template #header>
-          <Logo />
-          <UButton color="neutral" variant="ghost" trailing-icon="lucide:chevron-first" @open="open = false" />
-        </template>
-        <template #body>
-          <div class="flex flex-col">
-            <div class="flex-1 overflow-y-auto">
-              <u-separator />
-              <div class="px-3 py-4">
-                <UNavigationMenu :items="sidebarRoutes" orientation="vertical" class="data-[orientation=vertical]:w-full" :ui="{label: 'py-2.5', link: 'py-3'}" />
-              </div>
-            </div>
-          </div>
-        </template>
-      </UDrawer>
-      <UDropdownMenu :items="items">
-        <UButton icon="i-lucide-menu" color="neutral" variant="outline" />
-      </UDropdownMenu>
-      <ThemeToggle />
-    </u-container>
+  <nav class="fixed h-16 left-0 right-0 top-0 z-50 bg-white dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800">
+    <UContainer class="flex h-full items-center justify-between">
+      <Logo />
+      <slot name="center" />
+      <slot name="right" />
+    </UContainer>
   </nav>
 </template>
