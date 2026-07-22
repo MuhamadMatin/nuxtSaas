@@ -3,12 +3,12 @@
   import { sidebarRoutes } from '~~/constants/tools'
 
   const open = ref(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const route = useRoute();
 
-  watch(() => route.fullPath, () => {
-    open.value = false
-  })
+  const { data: userData } = await useFetch('/api/user', {
+    key: "userData"
+  });
 
   const profileItems = ref<DropdownMenuItem[][]>([
     [
@@ -17,13 +17,9 @@
         icon: 'i-lucide-user',
       },
       {
-        label: 'Billing',
-        icon: 'i-lucide-credit-card',
-        to: "/dashboard/settings"
-      },
-      {
         label: 'Setting',
         icon: 'i-lucide-settings',
+        to: "/dashboard/settings"
       },
       {
         label: 'Logout',
@@ -31,7 +27,7 @@
         color: 'error',
         onSelect: async () => {
           await logout({
-            redirectTo: "/auth/login"
+            redirectTo: "/"
           })
         }
       }
@@ -93,15 +89,14 @@
     <UserGenerateCounter />
     <u-separator />
     <div class="p-3">
-      <UDropdownMenu :items="profileItems" :ui="{content: 'w-64'}">
-        <UButton
-          label="Account"
-          icon="i-lucide-user"
-          color="neutral"
-          variant="ghost"
-          trailing-icon="i-lucide-chevrons-up-down"
-          class="w-full justify-start"
-        />
+      <UDropdownMenu v-if="user" :items="profileItems" :ui="{content: 'w-64'}">
+        <UButton label="Account" :icon="!user?.image ? 'lucide:circle-user-round' : undefined" color="neutral" variant="ghost" trailing-icon="i-lucide-chevrons-up-down" class="w-full justify-start">
+          <UAvatar v-if="user && user.image" :src="user.image" :alt="user.name" />
+          <span class="grid grid-rows-2">
+            <p class="text-sm truncate">{{ user?.name }}</p>
+            <UBadge v-if="user && userData?.subcription" label="Pro" class="w-fit" />
+          </span>
+        </UButton>
       </UDropdownMenu>
     </div>
   </aside>
