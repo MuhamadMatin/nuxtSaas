@@ -25,10 +25,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
   console.log(error);
 }
-
-definePageMeta({
-  layout: 'auth',
-})
 </script>
 
 <template>
