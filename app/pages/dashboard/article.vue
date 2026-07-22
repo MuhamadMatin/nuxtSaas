@@ -76,28 +76,30 @@
 
 <template>
   <div>
-    <u-container class="h-[calc(100dvh-88px)] flex flex-col py-4">
+    <u-container class="h-[calc(100dvh-33px)] flex flex-col">
       <PageHeading 
         title="AI Article Writer"
         description="Craft well-structure and engaging articles on any subject using advanced AI writing assitence"
+        class="mt-16 md:mt-4"
       />
       <UAlert v-if="error" color="error" variant="subtle" :title="error.statusCode + ''" :description="error.statusMessage" class="mb-2" />
       <div class="py-4 w-full max-w-full">
-        <div class="flex flex-col space-y-2">
-          <div>
-            <u-card>
-              <UForm :schema="schema" :state="state" class="space-y-4" @submit="generateArticle">
-                <UFormField name="articleTopic" label="Article Topic">
-                  <UInput v-model="state.articleTopic" class="w-full" />
-                </UFormField>
-                <UFormField name="articleLength" label="Article Length">
-                  <USelect v-model="state.articleLength" :items="articleItems" class="w-full"/>
-                </UFormField>
-                <UButton type="submit" label="Submit" color="neutral" />
-              </UForm>
-            </u-card>
-          </div>
-          <UCard :ui="{body: 'h-[calc(100dvh-350px)]'}" class="flex-1 overflow-y-auto">
+        <div class="flex flex-col lg:flex-row space-y-2 lg:gap-4">
+          <UCard class="w-full h-fit lg:w-1/2">
+            <UForm :schema="schema" :state="state" class="space-y-4" @submit="generateArticle">
+              <UFormField name="articleTopic" label="Article Topic">
+                <UInput v-model="state.articleTopic" class="w-full" />
+              </UFormField>
+              <UFormField name="articleLength" label="Article Length">
+                <USelect v-model="state.articleLength" :items="articleItems" class="w-full"/>
+              </UFormField>
+              <span class="flex justify-end">
+                <UButton v-if="isLoading" loading type="submit" label="Submit" color="neutral" />
+                <UButton v-else type="submit" label="Submit" color="neutral" />
+              </span>
+            </UForm>
+          </UCard>
+          <UCard :ui="{body: 'h-[calc(100dvh-470px)]'}" class="overflow-y-auto mt-2 w-full lg:mt-0 lg:w-1/2">
             <div v-if="content" class="h-full">
               <MDC :value="content"/>
             </div>

@@ -71,10 +71,11 @@
 
 <template>
   <div>
-    <u-container class="h-[calc(100dvh-88px)] flex flex-col py-4">
+    <u-container class="h-[calc(100dvh-33px)] flex flex-col">
       <PageHeading 
         title="Conversation"
         description="Engage neutral, intelligent conversations with AI for brainstroming, questions or casual chat"
+        class="mt-16 md:mt-4"
       />
       <UAlert v-if="error" color="error" variant="subtle" :title="error.statusCode + ''" :description="error.statusMessage" class="mb-2" />
 
@@ -101,7 +102,10 @@
             <u-form-field class="flex-1" name="userPrompt">
               <u-textarea v-model="state.userPrompt" :rows="1" class="w-full" />
             </u-form-field>
-            <u-button type="submit" icon="lucide:arrow-up" color="primary"></u-button>
+            <span>
+              <UButton v-if="isLoading" type="submit" icon="lucide:arrow-up" color="primary" />
+              <UButton v-else type="submit" icon="lucide:arrow-up" color="primary" />
+            </span>
           </div>
         </u-form>
       </div>
