@@ -27,7 +27,7 @@ export const setupPolar = () => polar({
             slug: "pro-monthly",
           }
         ],
-        successUrl: "/",
+        successUrl: "/dashboard",
         authenticatedUsersOnly: true
       }),
       portal(),
