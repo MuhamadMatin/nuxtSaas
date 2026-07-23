@@ -2,7 +2,7 @@ import { incrementLimit } from "~~/server/services/user-limit";
 import { openai } from "~~/server/utils/openai";
 import { validateUser } from "~~/server/utils/validate-user";
 
-export default defineEventHandler(async(event) => {
+export default defineEventHandler(async (event) => {
   const { messages } = await readBody(event);
   if (!messages) {
     throw createError({
@@ -18,12 +18,18 @@ export default defineEventHandler(async(event) => {
     messages: [
       {
         role: "system",
-        content: "You are helpfull asistant.",
+        content: `You are a knowledgeable and concise AI assistant. Follow these rules:
+          - Provide clear, accurate, and well-structured answers.
+          - Use markdown formatting when it improves readability (headings, lists, code blocks, bold/italic).
+          - If the user's question is ambiguous, ask a brief clarifying question before answering.
+          - Stay neutral and objective. Do not express personal opinions or make unsupported claims.
+          - When you don't know something, say so honestly rather than guessing.
+          - Keep responses focused and avoid unnecessary filler text.`,
       },
       ...messages
     ],
-    temperature: 0.5,
-    max_completion_tokens: 500
+    temperature: 0.7,
+    max_completion_tokens: 2048
   });
 
   if (!isPro) {
