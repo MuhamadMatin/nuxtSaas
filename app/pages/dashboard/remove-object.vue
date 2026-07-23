@@ -170,7 +170,7 @@
               </NuxtImg>
               <UButton v-if="imageUrl && isImgLoad == true" class="absolute bottom-2 right-2" icon="lucide:download" color="neutral" variant="subtle" :loading="isLoading" size="sm" @click="downloadImage">Download image</UButton>
             </div>
-            <div v-else-if="isLoading && !imageUrl && !isImgLoad" class="flex flex-col justify-center items-center w-full h-full">
+            <div v-else-if="isLoading && !imageUrl && isImgLoad == false" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />
             </div>
           </UCard>
