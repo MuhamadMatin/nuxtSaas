@@ -74,8 +74,13 @@
   })
 
   const isLoading = ref(false);
+  const isImgLoad = ref(false);
   const error = ref<AppError | null>(null);
   const imageUrl = ref("");
+
+  watch(imageUrl, () => {
+    isImgLoad.value = false
+  })
 
   const removeObject = async (event: FormSubmitEvent<Schema>) =>{
     try {
@@ -144,6 +149,7 @@
                   v-bind="imgAttrs"
                   :src="src"
                   class="w-full h-full object-contain"
+                  @load="isImgLoad = true"
                 />
                 <USkeleton v-else class="w-full h-full" />
               </NuxtImg>
