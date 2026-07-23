@@ -168,7 +168,7 @@
                 />
                 <USkeleton v-else class="w-full h-full" />
               </NuxtImg>
-              <UButton v-if="imageUrl" class="absolute bottom-2 right-2" icon="luchide:download" color="neutral" variant="subtle" :loading="isLoading" @click="downloadImage"/>
+              <UButton v-if="imageUrl" class="absolute bottom-2 right-2" icon="lucide:download" color="neutral" variant="subtle" :loading="isLoading" size="sm" @click="downloadImage">Download image</UButton>
             </div>
             <div v-else-if="isLoading && !imageUrl" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />
