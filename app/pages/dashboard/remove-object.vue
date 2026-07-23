@@ -126,8 +126,8 @@
       />
       <UAlert v-if="error" color="error" variant="subtle" :title="error.statusCode + ''" :description="error.statusMessage" class="mb-2" />
       <div class="py-4 w-full">
-        <div class="flex flex-col flex-wrap gap-4 lg:flex-row lg:justify-between">
-          <UCard class="flex-1">
+        <div class="flex flex-col flex-wrap gap-4">
+          <UCard class="flex-1 lg:w-md">
             <UForm :schema="schema" :state="state" class="space-y-4 w-full" @submit="removeObject">
               <UFormField label="Describe object to remove" name="object">
                 <UInput v-model="state.object" class="w-full" />
@@ -141,7 +141,7 @@
               </span>
             </UForm>
           </UCard>
-          <UCard :ui="{body: 'p-3 h-full'}" class="flex-1 min-h-[300px] w-full">
+          <UCard :ui="{body: 'h-[calc(100dvh-550px)]'}" class="flex-1">
             <div v-if="imageUrl" class="h-full">
               <NuxtImg :src="imageUrl" custom v-slot="{ src, isLoaded, imgAttrs }">
                 <img

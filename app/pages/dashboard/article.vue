@@ -91,8 +91,8 @@
       />
       <UAlert v-if="error" color="error" variant="subtle" :title="error.statusCode + ''" :description="error.statusMessage" class="mb-2" />
       <div class="py-4 w-full max-w-full">
-        <div class="flex flex-col lg:flex-row space-y-2 lg:gap-4">
-          <UCard class="w-full h-fit lg:w-1/2">
+        <div class="flex flex-col space-y-2 lg:gap-4">
+          <UCard class="w-full h-fit lg:w-md">
             <UForm :schema="schema" :state="state" class="space-y-4" @submit="generateArticle">
               <UFormField name="articleTopic" label="Article Topic">
                 <UInput v-model="state.articleTopic" class="w-full" />
@@ -106,7 +106,7 @@
               </span>
             </UForm>
           </UCard>
-          <UCard :ui="{body: 'h-[calc(100dvh-470px)]'}" class="overflow-y-auto mt-2 w-full lg:mt-0 lg:w-1/2">
+          <UCard :ui="{body: 'h-[calc(100dvh-470px)]'}" class="overflow-y-auto mt-2 w-full lg:mt-0">
             <div v-if="content" class="h-full">
               <MDC :value="content"/>
             </div>
