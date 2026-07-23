@@ -29,4 +29,7 @@ export default defineNuxtConfig({
       appEnv: "",
     }
   },
+  image: {
+    domains: ['github.com', 'res.cloudinary.com'],
+  },
 })
