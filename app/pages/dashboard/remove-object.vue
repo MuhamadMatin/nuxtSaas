@@ -125,7 +125,7 @@
       a.download = imageUrl.value;
       a.click();
     } catch (err) {
-      alert('Failed download image');
+      console.log(err);
     } finally {
       isLoading.value = false;
     }
@@ -157,7 +157,7 @@
             </UForm>
           </UCard>
           <UCard :ui="{body: 'h-[calc(100dvh-550px)]'}" class="flex-1">
-            <div v-if="imageUrl" class="h-full">
+            <div v-if="imageUrl" class="h-full relative">
               <NuxtImg :src="imageUrl" custom v-slot="{ src, isLoaded, imgAttrs }">
                 <img
                   v-if="isLoaded"
@@ -168,7 +168,7 @@
                 />
                 <USkeleton v-else class="w-full h-full" />
               </NuxtImg>
-              <UButton v-if="imageUrl" icon="luchide:download" color="neutral" variant="subtle" :loading="isLoading" @click="downloadImage"/>
+              <UButton v-if="imageUrl" class="absolute bottom-2 right-2" icon="luchide:download" color="neutral" variant="subtle" :loading="isLoading" @click="downloadImage"/>
             </div>
             <div v-else-if="isLoading && !imageUrl" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />
