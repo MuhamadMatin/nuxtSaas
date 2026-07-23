@@ -160,7 +160,7 @@
             <div v-if="imageUrl" class="h-full relative">
               <NuxtImg :src="imageUrl" custom v-slot="{ src, imgAttrs }">
                 <img
-                  v-if="isImgLoad"
+                  v-if="imageUrl"
                   v-bind="imgAttrs"
                   :src="src"
                   class="w-full h-full object-contain"
