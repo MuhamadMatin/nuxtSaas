@@ -30,6 +30,15 @@ export default defineNuxtConfig({
     }
   },
   image: {
-    domains: ['github.com', 'res.cloudinary.com'],
+    domains: [
+      'github.com', 
+      'res.cloudinary.com',
+      'lh1.googleusercontent.com',
+      'lh2.googleusercontent.com',
+      'lh3.googleusercontent.com',
+      'lh4.googleusercontent.com',
+      'lh5.googleusercontent.com',
+      'lh6.googleusercontent.com',
+    ],
   },
 })
