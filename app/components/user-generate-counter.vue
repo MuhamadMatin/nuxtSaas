@@ -9,12 +9,7 @@ const { data: userData, status } = await useFetch('/api/user', {
 
 const isPro = computed(() => !!userData.value?.subcription)
 
-const progress = computed(() => {
-  if (userData.value) {
-    return (userData.value.userLimitCount / MAX_FREE_GENERATE) * 100;
-  }  
-  return 0
-})
+const progress = computed(() => userData.value?.userLimitCount ?? 0)
 </script>
 
 <template>
