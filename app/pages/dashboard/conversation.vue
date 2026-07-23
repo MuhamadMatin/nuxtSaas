@@ -110,8 +110,7 @@
               <u-textarea v-model="state.userPrompt" :rows="1" class="w-full" />
             </u-form-field>
             <span>
-              <UButton v-if="isLoading" type="submit" icon="lucide:arrow-up" color="primary" />
-              <UButton v-else type="submit" icon="lucide:arrow-up" color="primary" />
+              <UButton :loading="isLoading" type="submit" icon="lucide:arrow-up" color="primary" />
             </span>
           </div>
         </u-form>

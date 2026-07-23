@@ -106,6 +106,22 @@
       isLoading.value = false;
     }
   }
+
+  async function downloadImage() {
+    isLoading.value = true;
+    try {
+      const res = await fetch(imageUrl.value);
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = imageUrl.value;
+      a.click();
+    } catch (err) {
+      alert('Failed download image');
+    } finally {
+      isLoading.value = false;
+    }
+  }
 </script>
 
 <template>
@@ -141,6 +157,7 @@
                 />
                 <USkeleton v-else class="w-full h-full" />
               </NuxtImg>
+              <UButton v-if="imageUrl" icon="luchide:download" color="neutral" variant="subtle" :loading="isLoading" @click="downloadImage"/>
             </div>
             <div v-else-if="isLoading && !imageUrl" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />

@@ -114,6 +114,22 @@
       isLoading.value = false;
     }
   }
+
+  async function downloadImage() {
+    isLoading.value = true;
+    try {
+      const res = await fetch(imageUrl.value);
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = imageUrl.value;
+      a.click();
+    } catch (err) {
+      alert('Failed download image');
+    } finally {
+      isLoading.value = false;
+    }
+  }
 </script>
 
 <template>
@@ -136,8 +152,7 @@
                 <UFileUpload v-model="state.image" accept="image/*" class="min-h-48" />
               </UFormField>
               <span class="flex justify-end">
-                <UButton v-if="isLoading" loading type="submit" label="Submit" color="neutral" />
-                <UButton v-else type="submit" label="Submit" color="neutral" />
+                <UButton :loading="isLoading" type="submit" label="Submit" color="neutral" />
               </span>
             </UForm>
           </UCard>
@@ -153,6 +168,7 @@
                 />
                 <USkeleton v-else class="w-full h-full" />
               </NuxtImg>
+              <UButton v-if="imageUrl" icon="luchide:download" color="neutral" variant="subtle" :loading="isLoading" @click="downloadImage"/>
             </div>
             <div v-else-if="isLoading && !imageUrl" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />

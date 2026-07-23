@@ -101,8 +101,7 @@
                 <USelect v-model="state.articleLength" :items="articleItems" class="w-full"/>
               </UFormField>
               <span class="flex justify-end">
-                <UButton v-if="isLoading" loading type="submit" label="Submit" color="neutral" />
-                <UButton v-else type="submit" label="Submit" color="neutral" />
+                <UButton :loading="isLoading" type="submit" label="Submit" color="neutral" />
               </span>
             </UForm>
           </UCard>
