@@ -114,7 +114,7 @@
       const blob = await res.blob();
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = imageUrl.value;
+      a.download = 'remove-background.png';
       a.click();
     } catch (err) {
       console.log(err);
