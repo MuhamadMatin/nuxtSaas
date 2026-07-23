@@ -92,7 +92,7 @@
       <UDropdownMenu v-if="user" :items="profileItems" :ui="{content: 'w-64'}">
         <UButton label="Account" :icon="!user?.image ? 'lucide:circle-user-round' : undefined" color="neutral" variant="ghost" trailing-icon="i-lucide-chevrons-up-down" class="w-full justify-start">
           <UAvatar v-if="user && user.image" :src="user.image" :alt="user.name" />
-          <span class="grid grid-rows-2">
+          <span class="flex flex-col truncate">
             <p class="text-sm truncate">{{ user?.name }}</p>
             <UBadge v-if="user && userData?.subcription" label="Pro" class="w-fit" />
           </span>
