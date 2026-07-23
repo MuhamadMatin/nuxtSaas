@@ -5,9 +5,9 @@
 
   useSeoMeta({
     title: 'AI-Powered Creative Tools',
-    description: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more — all in one platform.',
+    description: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more all in one platform.',
     ogTitle: 'NuxtSaaS — AI-Powered Creative Tools',
-    ogDescription: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more — all in one platform.',
+    ogDescription: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more all in one platform.',
     twitterTitle: 'NuxtSaaS — AI-Powered Creative Tools',
     twitterDescription: 'Create amazing content with AI-powered tools. Generate articles, code, blog posts, remove image backgrounds, and more.',
   })

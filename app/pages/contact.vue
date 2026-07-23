@@ -5,9 +5,9 @@ import type { FetchError } from "ofetch"
 
 useSeoMeta({
   title: "Contact Us",
-  description: "Get in touch with our team. Questions, feedback, or partnership ideas — we'd love to hear from you.",
+  description: "Get in touch with our team. Questions, feedback, or partnership ideas we'd love to hear from you.",
   ogTitle: "Contact Us - NuxtSaaS",
-  ogDescription: "Get in touch with our team. Questions, feedback, or partnership ideas — we'd love to hear from you.",
+  ogDescription: "Get in touch with our team. Questions, feedback, or partnership ideas we'd love to hear from you.",
 })
 
 const schema = z.object({
@@ -55,7 +55,7 @@ const sendMessage = async (event: FormSubmitEvent<Schema>) => {
         <div class="text-center p-4">
           <h1 class="text-xl font-semibold">Get in touch</h1>
           <p class="text-sm text-(--ui-text-dimmed) mt-1">
-            Questions, feedback, or partnership ideas — we'd love to hear from you.
+            Questions, feedback, or partnership ideas we'd love to hear from you.
           </p>
         </div>
       </template>
