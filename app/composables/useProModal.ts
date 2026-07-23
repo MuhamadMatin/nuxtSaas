@@ -1,5 +1,5 @@
 export default () => {
-  const isOpen = ref(false);
+  const isOpen = useState('pro-modal', () => false);
 
   const toggleModal = (modalState: boolean) => {
     isOpen.value = modalState
