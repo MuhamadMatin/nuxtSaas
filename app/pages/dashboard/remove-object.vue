@@ -158,17 +158,9 @@
           </UCard>
           <UCard :ui="{body: 'h-[calc(100dvh-550px)]'}" class="flex-1">
             <div v-if="imageUrl" class="h-full relative">
-              <NuxtImg :src="imageUrl" custom v-slot="{ src, isLoaded, imgAttrs }">
-                <img
-                  v-if="isLoaded"
-                  v-bind="imgAttrs"
-                  :src="src"
-                  class="w-full h-full object-contain"
-                  @load="isImgLoad = true"
-                />
-                <USkeleton v-else class="w-full h-full" />
-              </NuxtImg>
-              <UButton v-if="imageUrl" class="absolute bottom-2 right-2" icon="lucide:download" color="neutral" variant="subtle" :loading="isLoading" size="sm" @click="downloadImage">Download image</UButton>
+              <NuxtImg :src="imageUrl" class="w-full h-full object-contain" @load="isImgLoad = true" />
+              <USkeleton v-if="!isImgLoad" class="w-full h-full" />
+              <UButton v-if="imageUrl && !isImgLoad" class="absolute bottom-2 right-2" icon="lucide:download" color="neutral" variant="subtle" :loading="isLoading" size="sm" @click="downloadImage">Download image</UButton>
             </div>
             <div v-else-if="isLoading && !imageUrl" class="flex flex-col justify-center items-center w-full h-full">
               <USkeleton class="w-full h-full" />
