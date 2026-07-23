@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) =>{
     '/api/ai-tools/code',
     '/api/ai-tools/blog',
     '/api/ai-tools/resume',
+    '/api/ai-tools/article',
     '/api/cloudinary-tools/remove-background',
     '/api/cloudinary-tools/remove-object',
     '/api/user',

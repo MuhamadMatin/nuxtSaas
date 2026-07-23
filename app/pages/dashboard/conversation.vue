@@ -14,7 +14,7 @@
     robots: 'noindex, nofollow',
   })
 
-    const { toggleModal } = useProModal();
+  const { toggleModal } = useProModal();
 
   const schema = z.object({
     userPrompt: z.string().min(1, "Prompt required"),
