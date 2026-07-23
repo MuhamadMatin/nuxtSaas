@@ -52,6 +52,7 @@
       })
 
       if (data) {
+        isLoading.value = false;
         messages.value.push({
           role: "system",
           content: data
@@ -96,6 +97,19 @@
             <u-card :ui="{body: 'p-3 sm:p-3'}">
               <div class="text-sm max-w-prose">
                 <MDC :value="msg.content" />
+              </div>
+            </u-card>
+          </div>
+          <!-- skeleton loading -->
+          <div v-if="isLoading" class="flex items-start space-x-2 justify-start">
+            <div class="flex items-start space-x-2">
+              <UButton size="sm" variant="soft" class="rounded-full" icon="lucide:cpu" color="success" />
+            </div>
+            <u-card :ui="{body: 'p-3 sm:p-3'}">
+              <div class="space-y-2 w-48">
+                <USkeleton class="h-3 w-full" />
+                <USkeleton class="h-3 w-3/4" />
+                <USkeleton class="h-3 w-1/2" />
               </div>
             </u-card>
           </div>

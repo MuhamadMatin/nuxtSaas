@@ -105,13 +105,13 @@
               </span>
             </UForm>
           </UCard>
-          <UCard :ui="{body: 'h-[calc(100dvh-550px)]'}" class="flex-1">
+          <UCard :ui="{body: 'h-[calc(100dvh-550px)]'}" class="overflow-auto flex-1">
             <div v-if="contentResume" class="h-full">
               <MDC :value="contentResume"/>
             </div>
             <div v-else-if="isLoading && !contentResume" class="flex flex-col justify-center items-center w-full h-full">
-              <!-- <USkeleton class="w-full h-full" /> -->
-                Review your resume...
+              Review your resume...
+              <UProgress color="neutral" />
             </div>
           </UCard>
         </div>

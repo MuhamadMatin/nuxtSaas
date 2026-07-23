@@ -98,8 +98,9 @@
             <div v-if="content" class="h-full">
               <MDC :value="content"/>
             </div>
-            <div v-else-if="isLoading && !content" class="flex flex-col justify-center items-center">
+            <div v-else-if="isLoading && !content" class="flex flex-col justify-center items-center w-full h-full">
               Generating Blog... 
+              <UProgress color="neutral" />
             </div>
           </UCard>
         </div>
