@@ -1,7 +1,7 @@
 export const faqItems = [
   {
     label: "Is there a free plan?",
-    content: "Yes. Every new account gets 5 free generations across all our AI tools no credit card required. Upgrade to Pro anytime for unlimited usage.",
+    content: "Yes. Every new account gets 10 free generations across all our AI tools no credit card required. Upgrade to Pro anytime for unlimited usage.",
   },
   {
     label: "What AI models power these tools?",
