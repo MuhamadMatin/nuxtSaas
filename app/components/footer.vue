@@ -38,9 +38,9 @@ const linkColumns = [
 <template>
   <footer class="border-t border-(--ui-border) overflow-hidden">
     <UContainer class="py-16">
-      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-start">
         <!-- Brand -->
-        <div>
+        <div class="max-w-80">
           <NuxtLink to="/" class="inline-flex items-center gap-2">
             <Logo />
           </NuxtLink>
@@ -55,7 +55,7 @@ const linkColumns = [
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
           <div v-for="column in linkColumns" :key="column.title">
             <h3 class="text-sm font-semibold">{{ column.title }}</h3>
             <ul class="mt-4 space-y-3">
